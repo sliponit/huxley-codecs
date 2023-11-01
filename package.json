@@ -1,0 +1,20 @@
+{
+  "name": "huxley-codecs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts/owners.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "moralis": "node scripts/owners.mjs > data/owners.json",
+    "json2csv": "json2csv -i data/owners.json > data/owners.csv"
+  },
+  "author": "sliponit",
+  "license": "MIT",
+  "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.23.1",
+    "moralis": "^2.23.1"
+  },
+  "devDependencies": {
+    "@json2csv/cli": "^7.0.3"
+  }
+}
