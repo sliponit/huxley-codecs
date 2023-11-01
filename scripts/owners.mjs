@@ -16,13 +16,19 @@ const runApp = async () => {
     chain
   });
   let owners = firstResponse.result;
+  let cursor = firstResponse.pagination.cursor
 
-  for (let i = 0; i < 2; i++) {
-    const next = await firstResponse.next()
-    if (!next.hasNext) break;
+  for (let i = 0; i < 5; i++) {
+    const response = await Moralis.EvmApi.nft.getNFTOwners({
+      address,
+      chain,
+      cursor
+    });
 
-    owners = owners.concat(next.result);
-    console.error(i, owners.length, next.pagination)
+    owners = owners.concat(response.result);
+    cursor = response.pagination.cursor;
+    console.error(i, owners.length, response.pagination)
+    if (!cursor) break
   }
 
   console.log(JSON.stringify(owners));
